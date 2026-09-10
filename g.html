@@ -1,264 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-      maximum-scale=1.0,user-scalable=no">
+    <meta charset="UTF-8">
 
-<title>Fruit Catch</title>
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=no">
 
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    -webkit-tap-highlight-color:transparent;
-}
+    <title>Fruit Catch</title>
 
-body{
-    font-family:Arial,sans-serif;
-    background:#101522;
-    overflow:hidden;
-    touch-action:none;
-}
-
-#game{
-    position:relative;
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
-    background:linear-gradient(
-        #75d8ff 0%,
-        #c9f4ff 70%,
-        #75c957 70%,
-        #4da83c 100%
-    );
-}
-
-/* TOP BAR */
-
-#top{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:65px;
-    background:rgba(20,30,45,.92);
-    color:white;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    z-index:20;
-    font-weight:bold;
-    font-size:15px;
-}
-
-.stat{
-    text-align:center;
-}
-
-.stat small{
-    display:block;
-    color:#b8c5d6;
-    font-size:10px;
-    margin-bottom:3px;
-}
-
-/* CLOUDS */
-
-.cloud{
-    position:absolute;
-    width:110px;
-    height:35px;
-    background:white;
-    border-radius:40px;
-    opacity:.75;
-}
-
-.cloud:before,
-.cloud:after{
-    content:"";
-    position:absolute;
-    background:white;
-    border-radius:50%;
-}
-
-.cloud:before{
-    width:45px;
-    height:45px;
-    left:20px;
-    top:-20px;
-}
-
-.cloud:after{
-    width:55px;
-    height:55px;
-    right:15px;
-    top:-28px;
-}
-
-.c1{
-    top:100px;
-    left:-120px;
-}
-
-.c2{
-    top:180px;
-    right:-120px;
-    transform:scale(.8);
-}
-
-/* FRUIT */
-
-.fruit{
-    position:absolute;
-    width:48px;
-    height:48px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:38px;
-    z-index:10;
-}
-
-/* BASKET */
-
-#basket{
-    position:absolute;
-    bottom:55px;
-    width:90px;
-    height:55px;
-    background:linear-gradient(
-        #d9954d,
-        #9c5728
-    );
-    border-radius:10px 10px 25px 25px;
-    border:4px solid #713817;
-    z-index:15;
-    left:50%;
-    transform:translateX(-50%);
-}
-
-#basket:before{
-    content:"";
-    position:absolute;
-    width:70px;
-    height:30px;
-    border:5px solid #713817;
-    border-bottom:0;
-    border-radius:50px 50px 0 0;
-    left:6px;
-    top:-27px;
-}
-
-/* MESSAGE */
-
-#message{
-    position:absolute;
-    top:78px;
-    left:50%;
-    transform:translateX(-50%);
-    color:#172033;
-    background:rgba(255,255,255,.85);
-    padding:7px 15px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
-    z-index:18;
-}
-
-/* MENU */
-
-.screen{
-    position:absolute;
-    inset:0;
-    background:rgba(8,13,25,.90);
-    z-index:100;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
-
-.panel{
-    width:min(380px,94vw);
-    background:#20293b;
-    color:white;
-    border-radius:25px;
-    padding:28px 20px;
-    text-align:center;
-    box-shadow:0 15px 50px rgba(0,0,0,.5);
-}
-
-.panel h1{
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.panel p{
-    color:#bdc8d8;
-    line-height:1.5;
-    margin-bottom:20px;
-}
-
-button{
-    border:0;
-    border-radius:15px;
-    padding:14px 24px;
-    margin:6px;
-    font-size:17px;
-    font-weight:bold;
-    color:white;
-    background:#3d8bfd;
-    cursor:pointer;
-}
-
-button:active{
-    transform:scale(.95);
-}
-
-.green{
-    background:#32b768;
-}
-
-.yellow{
-    background:#e7a72d;
-}
-
-.hidden{
-    display:none;
-}
-
-/* LEVEL BAR */
-
-#levelBar{
-    position:absolute;
-    top:65px;
-    left:0;
-    width:100%;
-    height:5px;
-    background:rgba(0,0,0,.15);
-    z-index:20;
-}
-
-#progress{
-    height:100%;
-    width:0%;
-    background:#ffd43b;
-    transition:.2s;
-}
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div id="game">
 
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
 
-    <div id="top">
+    <!-- TOP BAR -->
+    <div id="topBar">
 
         <div class="stat">
             <small>LIVES</small>
@@ -282,31 +46,35 @@ button:active{
 
     </div>
 
+    <!-- LEVEL PROGRESS -->
     <div id="levelBar">
         <div id="progress"></div>
     </div>
 
     <div id="message">
-        Move basket and catch the fruits 🍎
+        Move the basket and catch fruits 🍎
     </div>
 
+    <!-- BASKET -->
     <div id="basket"></div>
 
-    <!-- START SCREEN -->
 
+    <!-- START SCREEN -->
     <div id="startScreen" class="screen">
 
         <div class="panel">
 
-            <h1>🍎 Fruit Catch</h1>
+            <div class="bigEmoji">🍎</div>
+
+            <h1>Fruit Catch</h1>
 
             <p>
-                Catch the falling fruits with your basket!<br><br>
-                Complete all 20 levels and collect coins.
+                Catch falling fruits with your basket!
+                <br><br>
+                Complete 20 levels and collect coins.
             </p>
 
-            <button class="green"
-                    onclick="startGame()">
+            <button id="startBtn">
                 ▶ START GAME
             </button>
 
@@ -314,28 +82,30 @@ button:active{
 
     </div>
 
-    <!-- GAME OVER -->
 
+    <!-- GAME OVER -->
     <div id="gameOver" class="screen hidden">
 
         <div class="panel">
 
-            <h1>😢 Game Over</h1>
+            <div class="bigEmoji">😢</div>
+
+            <h1>Game Over</h1>
 
             <p>
-                Your Score:
+                Score:
                 <b id="finalScore">0</b>
                 <br><br>
+
                 Level:
                 <b id="finalLevel">1</b>
             </p>
 
-            <button onclick="restartGame()">
+            <button id="restartBtn">
                 🔄 PLAY AGAIN
             </button>
 
-            <button class="yellow"
-                    onclick="showStart()">
+            <button class="yellow" id="homeBtn">
                 🏠 HOME
             </button>
 
@@ -343,24 +113,27 @@ button:active{
 
     </div>
 
-    <!-- LEVEL COMPLETE -->
 
+    <!-- LEVEL COMPLETE -->
     <div id="levelComplete" class="screen hidden">
 
         <div class="panel">
 
-            <h1>🎉 Amazing!</h1>
+            <div class="bigEmoji">🎉</div>
+
+            <h1>Great Job!</h1>
 
             <p>
-                Level <b id="completedLevel">1</b>
-                completed!
+                Level
+                <b id="completedLevel">1</b>
+                Complete!
                 <br><br>
-                ⭐ Score:
+
+                Score:
                 <b id="levelScore">0</b>
             </p>
 
-            <button class="green"
-                    onclick="nextLevel()">
+            <button id="nextLevelBtn">
                 ➡ NEXT LEVEL
             </button>
 
@@ -368,30 +141,31 @@ button:active{
 
     </div>
 
-    <!-- WIN -->
 
+    <!-- WIN SCREEN -->
     <div id="winScreen" class="screen hidden">
 
         <div class="panel">
 
-            <h1>🏆 YOU WON!</h1>
+            <div class="bigEmoji">🏆</div>
+
+            <h1>You Won!</h1>
 
             <p>
                 Congratulations! 🎉
                 <br><br>
                 You completed all 20 levels.
                 <br><br>
-                🏆 Final Score:
+
+                Final Score:
                 <b id="winScore">0</b>
             </p>
 
-            <button class="green"
-                    onclick="restartGame()">
+            <button id="playAgainBtn">
                 🔄 PLAY AGAIN
             </button>
 
-            <button class="yellow"
-                    onclick="showStart()">
+            <button class="yellow" id="winHomeBtn">
                 🏠 HOME
             </button>
 
@@ -401,489 +175,8 @@ button:active{
 
 </div>
 
-<script>
 
-/* =========================
-   GAME VARIABLES
-========================= */
+<script src="script.js"></script>
 
-const game = document.getElementById("game");
-const basket = document.getElementById("basket");
-
-let score = 0;
-let coins = 0;
-let lives = 3;
-let level = 1;
-
-let fruits = [];
-
-let running = false;
-let lastTime = 0;
-
-let spawnTimer = 0;
-let levelScoreStart = 0;
-
-const MAX_LEVEL = 20;
-
-
-/* =========================
-   FRUITS
-========================= */
-
-const fruitList = [
-    "🍎",
-    "🍊",
-    "🍓",
-    "🍇",
-    "🍉",
-    "🍒",
-    "🍋"
-];
-
-
-/* =========================
-   START
-========================= */
-
-function startGame(){
-
-    document.getElementById("startScreen")
-        .classList.add("hidden");
-
-    resetGame();
-
-    running = true;
-
-    lastTime = performance.now();
-
-    requestAnimationFrame(gameLoop);
-}
-
-
-/* =========================
-   RESET
-========================= */
-
-function resetGame(){
-
-    score = 0;
-    coins = 0;
-    lives = 3;
-    level = 1;
-
-    fruits.forEach(f => f.el.remove());
-
-    fruits = [];
-
-    basket.style.left = "50%";
-
-    updateUI();
-}
-
-
-/* =========================
-   RESTART
-========================= */
-
-function restartGame(){
-
-    document.getElementById("gameOver")
-        .classList.add("hidden");
-
-    document.getElementById("winScreen")
-        .classList.add("hidden");
-
-    resetGame();
-
-    running = true;
-
-    lastTime = performance.now();
-
-    requestAnimationFrame(gameLoop);
-}
-
-
-/* =========================
-   GAME LOOP
-========================= */
-
-function gameLoop(time){
-
-    if(!running) return;
-
-    let delta = time - lastTime;
-
-    lastTime = time;
-
-    spawnTimer += delta;
-
-    /* spawn rate */
-
-    let spawnRate =
-        Math.max(
-            280,
-            850 - level * 25
-        );
-
-    if(spawnTimer > spawnRate){
-
-        spawnFruit();
-
-        spawnTimer = 0;
-    }
-
-
-    /* move fruits */
-
-    for(let i = fruits.length - 1; i >= 0; i--){
-
-        let f = fruits[i];
-
-        f.y += f.speed * delta;
-
-        f.el.style.top = f.y + "px";
-
-        if(checkCollision(f)){
-
-            catchFruit(i);
-
-        }else if(
-            f.y >
-            window.innerHeight + 60
-        ){
-
-            missFruit(i);
-        }
-    }
-
-
-    requestAnimationFrame(gameLoop);
-}
-
-
-/* =========================
-   SPAWN FRUIT
-========================= */
-
-function spawnFruit(){
-
-    const el =
-        document.createElement("div");
-
-    el.className = "fruit";
-
-    el.innerText =
-        fruitList[
-            Math.floor(
-                Math.random() *
-                fruitList.length
-            )
-        ];
-
-    const x =
-        Math.random() *
-        (window.innerWidth - 50);
-
-    el.style.left = x + "px";
-
-    el.style.top = "-60px";
-
-    game.appendChild(el);
-
-
-    /* difficulty */
-
-    let speed =
-        0.20 +
-        level * 0.025 +
-        Math.random() * 0.12;
-
-
-    fruits.push({
-
-        el:el,
-
-        x:x,
-
-        y:-60,
-
-        speed:speed
-
-    });
-}
-
-
-/* =========================
-   COLLISION
-========================= */
-
-function checkCollision(f){
-
-    const basketRect =
-        basket.getBoundingClientRect();
-
-    const fruitRect =
-        f.el.getBoundingClientRect();
-
-
-    return !(
-        fruitRect.right <
-        basketRect.left ||
-
-        fruitRect.left >
-        basketRect.right ||
-
-        fruitRect.bottom <
-        basketRect.top ||
-
-        fruitRect.top >
-        basketRect.bottom
-    );
-}
-
-
-/* =========================
-   CATCH
-========================= */
-
-function catchFruit(index){
-
-    const f = fruits[index];
-
-    f.el.remove();
-
-    fruits.splice(index,1);
-
-    score += 10;
-
-    /* coin every 30 points */
-
-    if(score % 30 === 0){
-
-        coins++;
-    }
-
-    updateUI();
-
-    checkLevel();
-}
-
-
-/* =========================
-   MISS
-========================= */
-
-function missFruit(index){
-
-    const f = fruits[index];
-
-    f.el.remove();
-
-    fruits.splice(index,1);
-
-    lives--;
-
-    updateUI();
-
-    if(lives <= 0){
-
-        gameOver();
-    }
-}
-
-
-/* =========================
-   LEVEL
-========================= */
-
-function checkLevel(){
-
-    const needed =
-        level * 100;
-
-    let current =
-        score -
-        levelScoreStart;
-
-    let percent =
-        Math.min(
-            100,
-            current / 100 * 100
-        );
-
-    document.getElementById(
-        "progress"
-    ).style.width =
-        percent + "%";
-
-
-    if(current >= 100){
-
-        running = false;
-
-        levelScoreStart = score;
-
-        document.getElementById(
-            "completedLevel"
-        ).innerText = level;
-
-        document.getElementById(
-            "levelScore"
-        ).innerText = score;
-
-        document.getElementById(
-            "levelComplete"
-        ).classList.remove("hidden");
-    }
-}
-
-
-/* =========================
-   NEXT LEVEL
-========================= */
-
-function nextLevel(){
-
-    document.getElementById(
-        "levelComplete"
-    ).classList.add("hidden");
-
-
-    if(level >= MAX_LEVEL){
-
-        winGame();
-
-        return;
-    }
-
-
-    level++;
-
-    /* give one life */
-
-    if(lives < 3){
-
-        lives++;
-    }
-
-    fruits.forEach(
-        f => f.el.remove()
-    );
-
-    fruits = [];
-
-    updateUI();
-
-    running = true;
-
-    lastTime = performance.now();
-
-    requestAnimationFrame(gameLoop);
-}
-
-
-/* =========================
-   GAME OVER
-========================= */
-
-function gameOver(){
-
-    running = false;
-
-    document.getElementById(
-        "finalScore"
-    ).innerText = score;
-
-    document.getElementById(
-        "finalLevel"
-    ).innerText = level;
-
-    document.getElementById(
-        "gameOver"
-    ).classList.remove("hidden");
-}
-
-
-/* =========================
-   WIN
-========================= */
-
-function winGame(){
-
-    running = false;
-
-    document.getElementById(
-        "winScore"
-    ).innerText = score;
-
-    document.getElementById(
-        "winScreen"
-    ).classList.remove("hidden");
-}
-
-
-/* =========================
-   HOME
-========================= */
-
-function showStart(){
-
-    running = false;
-
-    document.getElementById(
-        "gameOver"
-    ).classList.add("hidden");
-
-    document.getElementById(
-        "winScreen"
-    ).classList.add("hidden");
-
-    document.getElementById(
-        "levelComplete"
-    ).classList.add("hidden");
-
-    document.getElementById(
-        "startScreen"
-    ).classList.remove("hidden");
-
-    fruits.forEach(
-        f => f.el.remove()
-    );
-
-    fruits = [];
-}
-
-
-/* =========================
-   UI
-========================= */
-
-function updateUI(){
-
-    document.getElementById(
-        "score"
-    ).innerText = score;
-
-    document.getElementById(
-        "coins"
-    ).innerText = coins;
-
-    document.getElementById(
-        "level"
-    ).innerText =
-        level + " / " + MAX_LEVEL;
-
-
-    let hearts = "";
-
-    for(let i = 0; i < 3; i++){
-
-        hearts +=
-            i < lives
-            ? "❤️"
-            : "🖤";
-    }
-
-    document.getElementById(
-        "lives"
-    ).innerText = hearts;
+</body>
+</html>
