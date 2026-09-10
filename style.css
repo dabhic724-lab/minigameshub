@@ -1,0 +1,393 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #101522;
+    touch-action: none;
+}
+
+
+/* =========================
+   GAME AREA
+========================= */
+
+#game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #6ed5ff 0%,
+            #c9f5ff 68%,
+            #72c85b 68%,
+            #4ea83e 100%
+        );
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+#topBar {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 65px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background: rgba(18, 27, 43, 0.94);
+
+    color: white;
+
+    z-index: 50;
+}
+
+.stat {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.stat small {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #aebbd0;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+#levelBar {
+    position: absolute;
+
+    top: 65px;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: rgba(0, 0, 0, 0.15);
+
+    z-index: 50;
+}
+
+#progress {
+    width: 0%;
+    height: 100%;
+
+    background: #ffd43b;
+
+    transition: width 0.2s;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+#message {
+    position: absolute;
+
+    top: 82px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 7px 15px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    color: #172033;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    z-index: 40;
+}
+
+
+/* =========================
+   CLOUDS
+========================= */
+
+.cloud {
+    position: absolute;
+
+    width: 110px;
+    height: 35px;
+
+    background: white;
+
+    border-radius: 40px;
+
+    opacity: 0.7;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 45px;
+    height: 45px;
+
+    left: 20px;
+    top: -20px;
+}
+
+.cloud::after {
+    width: 55px;
+    height: 55px;
+
+    right: 15px;
+    top: -28px;
+}
+
+.cloud1 {
+    top: 120px;
+    left: -120px;
+}
+
+.cloud2 {
+    top: 210px;
+    right: -120px;
+    transform: scale(0.8);
+}
+
+
+/* =========================
+   FRUIT
+========================= */
+
+.fruit {
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 38px;
+
+    z-index: 20;
+
+    user-select: none;
+}
+
+
+/* =========================
+   BASKET
+========================= */
+
+#basket {
+    position: absolute;
+
+    bottom: 55px;
+
+    left: 50%;
+
+    width: 90px;
+    height: 55px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            #d9954d,
+            #9d582a
+        );
+
+    border: 4px solid #713817;
+
+    border-radius:
+        10px 10px 25px 25px;
+
+    z-index: 30;
+}
+
+#basket::before {
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+    top: -27px;
+
+    width: 70px;
+    height: 30px;
+
+    border: 5px solid #713817;
+
+    border-bottom: 0;
+
+    border-radius:
+        50px 50px 0 0;
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(8, 13, 25, 0.90);
+
+    z-index: 100;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================
+   PANEL
+========================= */
+
+.panel {
+    width: min(380px, 94vw);
+
+    padding: 28px 20px;
+
+    text-align: center;
+
+    color: white;
+
+    background: #20293b;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0, 0, 0, 0.5);
+}
+
+.panel h1 {
+    margin-bottom: 12px;
+
+    font-size: 30px;
+}
+
+.panel p {
+    margin-bottom: 20px;
+
+    color: #bdc8d8;
+
+    line-height: 1.5;
+}
+
+.bigEmoji {
+    margin-bottom: 10px;
+
+    font-size: 65px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+
+    margin: 6px;
+
+    padding: 14px 24px;
+
+    border-radius: 15px;
+
+    color: white;
+
+    background: #3d8bfd;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.yellow {
+    background: #e7a72d;
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+
+    #topBar {
+        height: 60px;
+    }
+
+    .stat {
+        font-size: 12px;
+    }
+
+    #message {
+        font-size: 11px;
+    }
+
+    #basket {
+        width: 80px;
+    }
+}
