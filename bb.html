@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Brick Breaker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game">
+
+    <div id="hud">
+        <div>
+            <small>LIVES</small>
+            <span id="lives">❤️❤️❤️</span>
+        </div>
+
+        <div>
+            <small>SCORE</small>
+            <span id="score">0</span>
+        </div>
+
+        <div>
+            <small>COINS</small>
+            <span id="coins">0</span>
+        </div>
+
+        <div>
+            <small>LEVEL</small>
+            <span id="level">1 / 20</span>
+        </div>
+    </div>
+
+    <div id="progressBar">
+        <div id="progress"></div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <div id="startScreen" class="screen">
+        <div class="panel">
+            <div class="emoji">🧱</div>
+            <h1>Brick Breaker</h1>
+            <p>
+                Break all the bricks!
+                <br><br>
+                Move the paddle and keep the ball alive.
+                <br><br>
+                Complete all 20 levels.
+            </p>
+            <button id="startBtn">▶ START</button>
+        </div>
+    </div>
+
+    <div id="gameOver" class="screen hidden">
+        <div class="panel">
+            <div class="emoji">😢</div>
+            <h1>Game Over</h1>
+            <p>
+                Score:
+                <b id="finalScore">0</b>
+                <br><br>
+                Level:
+                <b id="finalLevel">1</b>
+            </p>
+            <button id="restartBtn">🔄 PLAY AGAIN</button>
+            <button id="homeBtn" class="yellow">🏠 HOME</button>
+        </div>
+    </div>
+
+    <div id="levelComplete" class="screen hidden">
+        <div class="panel">
+            <div class="emoji">🎉</div>
+            <h1>Level Complete!</h1>
+            <p>
+                Level
+                <b id="completedLevel">1</b>
+                completed!
+                <br><br>
+                Score:
+                <b id="levelScore">0</b>
+            </p>
+            <button id="nextLevelBtn">➡ NEXT LEVEL</button>
+        </div>
+    </div>
+
+    <div id="winScreen" class="screen hidden">
+        <div class="panel">
+            <div class="emoji">🏆</div>
+            <h1>You Won!</h1>
+            <p>
+                Amazing!
+                <br><br>
+                You completed all 20 levels.
+                <br><br>
+                Final Score:
+                <b id="winScore">0</b>
+            </p>
+            <button id="playAgainBtn">🔄 PLAY AGAIN</button>
+            <button id="winHomeBtn" class="yellow">🏠 HOME</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
