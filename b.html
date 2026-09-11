@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=no">
+
+    <title>Sky Bird</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+    <!-- Background -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <!-- Top information -->
+    <div id="topBar">
+
+        <div class="stat">
+            <small>LIVES</small>
+            <span id="lives">❤️❤️❤️</span>
+        </div>
+
+        <div class="stat">
+            <small>SCORE</small>
+            <span id="score">0</span>
+        </div>
+
+        <div class="stat">
+            <small>COINS</small>
+            <span id="coins">0</span>
+        </div>
+
+        <div class="stat">
+            <small>LEVEL</small>
+            <span id="level">1 / 20</span>
+        </div>
+
+    </div>
+
+    <!-- Progress -->
+    <div id="levelBar">
+        <div id="progress"></div>
+    </div>
+
+    <!-- Bird -->
+    <div id="bird">🐦</div>
+
+
+    <!-- START -->
+    <div id="startScreen" class="screen">
+
+        <div class="panel">
+
+            <div class="bigEmoji">🐦</div>
+
+            <h1>Sky Bird</h1>
+
+            <p>
+                Tap the screen to fly!
+                <br><br>
+                Pass through the gaps and collect coins.
+                <br><br>
+                Complete all 20 levels.
+            </p>
+
+            <button id="startBtn">
+                ▶ START GAME
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME OVER -->
+    <div id="gameOver" class="screen hidden">
+
+        <div class="panel">
+
+            <div class="bigEmoji">😢</div>
+
+            <h1>Game Over</h1>
+
+            <p>
+                Score:
+                <b id="finalScore">0</b>
+                <br><br>
+
+                Level:
+                <b id="finalLevel">1</b>
+            </p>
+
+            <button id="restartBtn">
+                🔄 PLAY AGAIN
+            </button>
+
+            <button id="homeBtn" class="yellow">
+                🏠 HOME
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- LEVEL COMPLETE -->
+    <div id="levelComplete" class="screen hidden">
+
+        <div class="panel">
+
+            <div class="bigEmoji">🎉</div>
+
+            <h1>Level Complete!</h1>
+
+            <p>
+                Level
+                <b id="completedLevel">1</b>
+                completed!
+                <br><br>
+
+                ⭐ Score:
+                <b id="levelScore">0</b>
+            </p>
+
+            <button id="nextLevelBtn">
+                ➡ NEXT LEVEL
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- WIN -->
+    <div id="winScreen" class="screen hidden">
+
+        <div class="panel">
+
+            <div class="bigEmoji">🏆</div>
+
+            <h1>You Won!</h1>
+
+            <p>
+                Amazing! 🎉
+                <br><br>
+                You completed all 20 levels.
+                <br><br>
+
+                🏆 Final Score:
+                <b id="winScore">0</b>
+            </p>
+
+            <button id="playAgainBtn">
+                🔄 PLAY AGAIN
+            </button>
+
+            <button id="winHomeBtn" class="yellow">
+                🏠 HOME
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
